@@ -2,7 +2,10 @@
 import { GoogleGenAI, Type } from "@google/genai";
 import { Todo, Suggestion } from "../types";
 
-const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
+const ai = new GoogleGenAI({
+  apiKey: process.env.GEMINI_API_KEY
+});
+
 
 export async function getTaskSuggestions(existingTasks: Todo[]): Promise<Suggestion[]> {
   const taskContext = existingTasks.map(t => t.text).join(', ');
